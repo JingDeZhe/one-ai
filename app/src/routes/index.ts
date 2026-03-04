@@ -1,19 +1,11 @@
-import {
-  createRouter,
-  createWebHashHistory,
-  type RouteRecordRaw,
-} from 'vue-router'
-import Home from '../views/Home.vue'
-
-const routes: RouteRecordRaw[] = [
-  { path: '/', component: Home },
-  {
-    path: '/about',
-    component: () => import('../views/About.vue'),
-  },
-]
+import { createRouter, createWebHashHistory } from 'vue-router'
+import { routes, handleHotUpdate } from 'vue-router/auto-routes'
 
 export const router = createRouter({
   history: createWebHashHistory('/app/'),
   routes,
 })
+
+if (import.meta.hot) {
+  handleHotUpdate(router)
+}
