@@ -1,0 +1,23 @@
+{
+  "name": "simple-bun-vue-template",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"bun --watch run index.ts\" \"cd app && bun run dev\"",
+    "dev:front": "cd app && bun run dev",
+    "build:front": "cd app && bun run build",
+    "build": "npm run build:front && bun build --compile index.ts --outfile dist/simple-bun-vue-template.exe",
+    "preview": "npm run build:front && bun run index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "concurrently": "^9.2.1"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "hono": "^4.12.4"
+  }
+}
