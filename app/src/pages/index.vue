@@ -1,10 +1,17 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { useQuery } from '@tanstack/vue-query'
 import { getInfo } from '../api'
 
-const title = ref('')
-getInfo().then((d) => {
-  title.value = d.message
+const {
+  isPending,
+  isFetching,
+  isError,
+  data: title,
+  error,
+} = useQuery({
+  queryKey: ['mainInfo'],
+  queryFn: () => getInfo().then((d) => d.message),
+  placeholderData: '加载中...',
 })
 </script>
 
