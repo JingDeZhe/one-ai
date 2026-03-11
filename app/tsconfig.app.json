@@ -11,7 +11,11 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
-    "moduleResolution": "Bundler"
+    "moduleResolution": "Bundler",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": [
     "./typed-router.d.ts",
@@ -24,9 +28,5 @@
       "vue-router/volar/sfc-route-blocks",
       "vue-router/volar/sfc-typed-router"
     ]
-  },
-  "baseUrl": ".",
-  "paths": {
-    "@/*": ["./src/*"]
   }
 }
