@@ -10,7 +10,7 @@ export async function chat(message: string) {
     ],
   })
 
-  return completion.choices[0]?.message.content || '...'
+  return { content: completion.choices[0]?.message.content || '...' }
 }
 
 export interface ChatOptions {

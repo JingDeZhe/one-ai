@@ -1,20 +1,20 @@
 <script lang="ts" setup>
 import { useQuery } from '@tanstack/vue-query'
-import { getInfo, testAI } from '../api'
+import { chatStream, getInfo, testAI } from '../api'
 import { NCard } from 'naive-ui'
 import MarkdownRenderer from '@/components/MarkdownRenderer/MarkdownRenderer.vue'
+import { ref } from 'vue'
 
-const { isPending, isFetching, isError, data, error } = useQuery({
-  queryKey: ['mainInfo'],
-  queryFn: () => testAI().then((d) => d.content),
-  placeholderData: '加载中...',
+const mdText = ref('')
+chatStream('你是谁？', (chunk) => {
+  mdText.value += chunk
 })
 </script>
 
 <template>
   <div class="p-2">
     <NCard>
-      <MarkdownRenderer :content="data"></MarkdownRenderer>
+      <MarkdownRenderer :content="mdText"></MarkdownRenderer>
     </NCard>
   </div>
 </template>

@@ -49,7 +49,7 @@ routes.post('/chat-stream', async (c) => {
       })
 
       await stream.writeSSE({
-        data: JSON.stringify({ done: true }),
+        data: '[DONE]',
         event: 'end',
       })
     } catch (error) {
